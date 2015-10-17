@@ -208,7 +208,7 @@ alertForm.addEventListener('submit', alertNotSubmit);
 <p>You should use jQuery for these parts.</p>
 <p>We didn't include jQuery in this document, though&mdash;so your first task is to include it!</p>
 
-
+<script src="https://code.jquery.com/jquery.js"></script>
 
 <h3>Finding the Button</h3>
 <p>
@@ -220,7 +220,16 @@ alertForm.addEventListener('submit', alertNotSubmit);
 </fieldset>
 
 <script>
-  // code here for above problem
+
+  function raiseAlert() {
+    alert('You found the button!');
+  }
+
+  $('.tricky-to-find').on('click', raiseAlert);
+
+  // I am not sure what the hint is meant to tell us in terms of solving this.
+  // putting in a .class where #id would go seems to work.
+
 </script>
 
 <div class="hint">
@@ -228,8 +237,6 @@ alertForm.addEventListener('submit', alertNotSubmit);
     You can find things by class name&mdash;but then you get back an array.
   </div>
 </div>
-
-
 
 
 
