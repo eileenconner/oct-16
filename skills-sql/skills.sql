@@ -2,36 +2,45 @@
 -- for the most explanatory version of each question.
 
 -- 1. Select all columns for all brands in the Brands table.
+
  SELECT * FROM Brands;
 
 -- 2. Select all columns for all car models made by Pontiac in the Models table.
+
 SELECT * FROM Models WHERE brand_name = 'Pontiac';
 
 -- 3. Select the brand name and model 
 --    name for all models made in 1964 from the Models table.
+
 SELECT brand_name, name FROM Models WHERE year = '1964';
 
 -- 4. Select the model name, brand name, and headquarters for the Ford Mustang 
 --    from the Models and Brands tables.
+
 SELECT Models.name, Brands.name, headquarters 
 FROM Brands JOIN Models 
 ON (Brands.name=Models.brand_name) 
 WHERE Models.name='Mustang';
 
-
 -- 5. Select all rows for the three oldest brands 
 --    from the Brands table (Hint: you can use LIMIT and ORDER BY).
+
 SELECT * FROM Brands WHERE founded < 1903 GROUP BY name ORDER BY founded ASC;
+
 -- I'm not sure that manually inserting the limit date of 1903 is the best way to do this.
 
 -- 6. Count the Ford models in the database (output should be a number).
+
 SELECT COUNT(*) FROM Models WHERE brand_name = 'Ford';
 
 -- 7. Select the name of any and all car brands that are not discontinued.
+
 SELECT name FROM Brands WHERE discontinued IS NULL;
 
 -- 8. Select rows 15-25 of the DB in alphabetical order by model name.
+
 SELECT * FROM Models WHERE id BETWEEN 15 AND 25 ORDER BY brand_name;
+
 -- I believe we can also do this with offset/limit by instead of between, 
 -- but Ask Dr Google returned this answer, which seems even better.
 -- Also, the html instructions specified "Models" instead of the entire db.
@@ -41,10 +50,12 @@ SELECT * FROM Models WHERE id BETWEEN 15 AND 25 ORDER BY brand_name;
 --    for model(s) even if its brand is not in the Brands table.
 --    (The year the brand was founded should be NULL if 
 --    the brand is not in the Brands table.)
+
 SELECT brand_name, Models.name, founded 
 FROM Models LEFT JOIN Brands 
 ON (Brands.name=Models.brand_name) 
 WHERE Models.year = 1960;
+
 -- This solution leaves the null field blank. Not sure how to get it to print.
 
 -- Part 2: Change the following queries according to the specifications. 
@@ -96,6 +107,7 @@ ON b.name = m.brand_name;
     --   LEFT JOIN Models
     --     ON brands.name = Models.brand_name
     -- WHERE Models.year > 1940;
+
 SELECT Brands.name, founded 
 FROM Brands LEFT JOIN Models 
 ON brands.name = Models.brand_name 
@@ -114,7 +126,15 @@ WHERE Models.name IS NULL;
     --     ON m.brand_name = b.name
     -- WHERE b.discontinued NOT NULL;
 
-
+SELECT b.name,
+       m.name,
+       m.year,
+       b.discontinued, 
+       (b.discontinued - m.year) AS years_until_brand_discontinued
+FROM Models AS m
+  LEFT JOIN brands AS b
+    ON m.brand_name = b.name
+WHERE b.discontinued NOT NULL;
 
 
 -- Part 3: Further Study
