@@ -269,9 +269,6 @@ $('#kittenz-rule').on('dblclick', catToDog);
 </div>
 
 
-
-
-
 <h3>Slowly Make a Porcupine</h3>
 <p>
   After complaints from Joel about the lack of cute porcupines in our exercises,
@@ -293,6 +290,15 @@ $('#kittenz-rule').on('dblclick', catToDog);
 
 <script>
   // put your code here
+  function makePorcupine(evt) {
+    var slideUpPic = function() {
+      $('#cute-porcupine-image').slideDown();
+    }
+    setTimeout(slideUpPic, 1000);
+  }
+
+  $('#make-a-porcupine').on('click', makePorcupine);
+
 </script>
 
 <div class="hint">
