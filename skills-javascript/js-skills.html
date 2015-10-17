@@ -158,13 +158,10 @@ var alertForm = document.getElementById('prevent-form-submission-form');
 
 function alertNotSubmit(evt) {
   alert("Not so fast!");
-  evt.prevent.Default();
+  evt.preventDefault();
 }
 
 alertForm.addEventListener('submit', alertNotSubmit);
-
-// Right now this pops up the alert and THEN goes to the form submit location,
-// whether I click the button or hit enter in the text field. How to fix??
 
 
 </script>
