@@ -97,11 +97,14 @@
 </fieldset>
 
 <script>
-  // code here for above problem
+var button = document.getElementById('popup-alert-button');
+  
+function buttonPress(){
+  alert("It's a popup!");
+}
+
+button.addEventListener('click', buttonPress);
 </script>
-
-
-
 
 
 <h3>Manipulating the DOM</h3>
@@ -115,7 +118,16 @@
 </fieldset>
 
 <script>
-  // code here for above-problem
+  
+var helloButton = document.getElementById('change-hello-to-goodbye-button');
+var message = document.getElementById('message-to-change');
+
+function helloToGoodbye() {
+  message.innerText = 'goodbye';
+}
+
+helloButton.addEventListener('click', helloToGoodbye);
+
 </script>
 
 <div class="hint">
@@ -125,9 +137,6 @@
     you the complete list of properties/methods on an object!
   </div>
 </div>
-
-
-
 
 
 <h3>Preventing Form Submission</h3>
@@ -144,7 +153,10 @@
 </fieldset>
 
 <script>
-  // code here for above problem
+  
+
+
+
 </script>
 
 <div class="hint">
