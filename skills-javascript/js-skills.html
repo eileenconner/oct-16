@@ -76,14 +76,8 @@
 
 
 
-
-
-
 <h2>Plain Javacript</h2>
 <p>You may not use jQuery for this section!</p>
-
-
-
 
 
 <h3>Making an Event Handler</h3>
@@ -175,11 +169,6 @@ alertForm.addEventListener('submit', alertNotSubmit);
 </div>
 
 
-
-
-
-
-
 <h3>Reversing a String</h3>
 <p>
   There's some incomplete Javascript code below. When the button is pushed, it pops up an
@@ -193,22 +182,21 @@ alertForm.addEventListener('submit', alertNotSubmit);
 </fieldset>
 
 <script>
-//  Here's a stub of a function you can use!
 
-//  function reverseString() {
-//    var msg = "Porcupines are cute";
-//
-//    // do some stuff here to reverse that string into a new variable
-//    var newMsg = "This should be the reversed string";
-//
-//    alert(newMsg);
-//  }
+ function reverseString() {
+   var msg = "Porcupines are cute";
 
-// Here's a stub of event stuff you could use
-//
+   var newMsg = msg.split('').reverse().join('');
 
-//  var button = document.getElementById('reverse-string-button');
-//  button.addEventListener('click', reverseString);
+   alert(newMsg);
+ }
+
+// this required some googling to figure out how to split/join by character
+// Conceptually newMsg is pretty much what I would do to tackle this issue in Python.
+
+ var button = document.getElementById('reverse-string-button');
+ button.addEventListener('click', reverseString);
+
 </script>
 
 
