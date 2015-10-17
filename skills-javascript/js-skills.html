@@ -221,7 +221,7 @@ alertForm.addEventListener('submit', alertNotSubmit);
 
 <script>
 
-  function raiseAlert() {
+  function raiseAlert(evt) {
     alert('You found the button!');
   }
 
@@ -239,7 +239,6 @@ alertForm.addEventListener('submit', alertNotSubmit);
 </div>
 
 
-
 <h3>Down with Cats!</h3>
 <p>
   After complaints from Cynthia about our cat-centered curriculum, you now need to change
@@ -255,6 +254,12 @@ alertForm.addEventListener('submit', alertNotSubmit);
 
 <script>
   // put your code here
+function catToDog(evt) {
+  $("#kittenz-rule").attr('src', 'http://41.media.tumblr.com/fc4c623439a75b3888c0fd72869a1e5c/tumblr_npz1o6kYut1tbwj7ho6_1280.jpg');
+}
+
+$('#kittenz-rule').on('dblclick', catToDog);
+
 </script>
 
 <div class="hint">
