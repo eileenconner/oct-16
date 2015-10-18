@@ -291,10 +291,10 @@ $('#kittenz-rule').on('dblclick', catToDog);
 <script>
   // put your code here
   function makePorcupine(evt) {
-    var slideUpPic = function() {
-      $('#cute-porcupine-image').slideDown();
+    var slideDownPic = function() {
+      $('#cute-porcupine-image').slideDown(3000);  // this makes the animation itself slower
     }
-    setTimeout(slideUpPic, 1000);
+    setTimeout(slideDownPic, 1000); //this delays the animation's start
   }
 
   $('#make-a-porcupine').on('click', makePorcupine);
@@ -342,6 +342,19 @@ $('#kittenz-rule').on('dblclick', catToDog);
 
 <script>
   // put your code here
+  // on click: add msg to div #agreeable-text with prewritten string + variable value
+  // this is not working!
+
+  var favoriteFood = document.getElementById('favorite-food-input');
+  var agreeMsg = document.getElementById('agreeable-text');
+
+  function writeAgreeMsg(evt) {
+    agreeMsg.innerText = 'I like', favoriteFood, 'too.';
+    evt.preventDefault;
+  }
+
+  favoriteFood.addEventListener('submit', writeAgreeMsg);  
+
 </script>
 
 <div class="hint">
