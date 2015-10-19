@@ -140,6 +140,7 @@ WHERE b.discontinued NOT NULL;
 -- Part 3: Further Study
 
 -- 1. Select the name of any brand with more than 5 models in the database.
+SELECT brand_name FROM Models GROUP BY brand_name HAVING COUNT(*) > 5;
 
 -- 2. Add the following rows to the Models table.
 
@@ -148,10 +149,22 @@ WHERE b.discontinued NOT NULL;
 -- 2015    Chevrolet  Malibu
 -- 2015    Subaru     Outback
 
+INSERT INTO Models (year, brand_name, name) VALUES (2015, 'Malibu', 'Chevrolet');
+INSERT INTO Models (year, brand_name, name) VALUES (2015, 'Outback', 'Subaru');
+
 -- 3. Write a SQL statement to crate a table called `Awards`
 --    with columns `name`, `year`, and `winner`. Choose
 --    an appropriate datatype and nullability for each column
 --   (no need to do subqueries here).
+
+CREATE TABLE Awards(
+    name VARCHAR(20) NOT NULL,
+    year INTEGER NOT NULL,
+    winner_id INTEGER
+    );
+
+-- I'm leaving 'winner' nullable because a winner may not have been chosen yet.
+-- As an id/primary key is not specified, I'm leaving it out.
 
 -- 4. Write a SQL statement that adds the following rows to the Awards table:
 
@@ -159,6 +172,19 @@ WHERE b.discontinued NOT NULL;
 --   ----                 ----      ---------------
 --   IIHS Safety Award    2015      the id for the 2015 Chevrolet Malibu
 --   IIHS Safety Award    2015      the id for the 2015 Subaru Outback
+
+INSERT INTO Awards (name, year, winner_id) 
+    VALUES ('IIHS Safety Award', 2015, (
+        SELECT id 
+        FROM Models 
+        WHERE brand_name = 'Malibu' AND name = 'Chevrolet'));
+
+INSERT INTO Awards (name, year, winner_id) 
+    VALUES ('IIHS Safety Award', 2015, (
+        SELECT id 
+        FROM Models 
+        WHERE brand_name = 'Outback' AND name = 'Subaru'));
+
 
 -- 5. Using a subquery, select only the *name* of any model whose 
 -- year is the same year that *any* brand was founded.
